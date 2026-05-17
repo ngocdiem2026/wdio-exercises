@@ -119,7 +119,7 @@ describe('Web Browser and Web Element', () => {
         await expect(currentUrl).toContain('/status_codes');
     });
 
-    it.only ('TC10 - Check the data in the table', async () => {
+    it ('TC10 - Check the data in the table', async () => {
         await browser.url('https://the-internet.herokuapp.com/tables');
         
         const firstHeader = await $('//span[text()="Last Name"]').getText();

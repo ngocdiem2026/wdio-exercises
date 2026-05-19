@@ -31,7 +31,7 @@ describe('Web Browser and Web Element', () => {
         const eLoginBtn = await $('button[type="submit"]');
         const eErrorMsg = await $('div.flash.error');
 
-        await eUsername.setValue('tomsmith');
+        await eUsername.setValue('wrong_user');
         await ePassword.setValue('SuperSecretPassword!');
         await eLoginBtn.click();
         
@@ -51,14 +51,15 @@ describe('Web Browser and Web Element', () => {
         await expect(type).toEqual('checkbox');
     });
 
-    it ('TC5 - Select an option in the dropdown', async () => {
+    it.only ('TC5 - Select an option in the dropdown', async () => {
         await browser.url('https://the-internet.herokuapp.com/dropdown');
         
-        const eDropdown = await $('option[value = "2"]');
-        await eDropdown.click();
+        const eDropdown = await $('#dropdown');
+        await eDropdown.selectByAttribute('value','2');
 
-        await browser.pause(2000);
-        const optionName = await eDropdown.getText();
+        // await browser.pause(2000)
+        const eSelectedOption = await $('//option[@selected="selected"]');
+        const optionName = await eSelectedOption.getText();
         await expect(optionName).toEqual('Option 2');
     });
 

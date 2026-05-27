@@ -1,5 +1,5 @@
 //cSpell: disable
-describe ('Chapter 7 - Button', () => {
+describe.only ('Chapter 7 - Button', () => {
     before(async() => {
         await browser.maximizeWindow();
         await browser.url('https://demoqa.com/buttons');
@@ -49,22 +49,22 @@ describe ('Chapter 7 - Button', () => {
         Verify từng button isDisplayed() trả về true
         Verify từng button isEnabled() trả về true
     */
-   it ('TC04 — Verify the button is displayed and enabled before clicking.', async () => {
+   it.only ('TC04 — Verify the button is displayed and enabled before clicking.', async () => {
         const eSingleBtn = await $('//button[text() = "Click Me"]');    
         const eDoubleBtn = await $('#doubleClickBtn');
         const eRightBtn = await $('#rightClickBtn');
 
-        const isSingleBtnVisible = await eSingleBtn.isDisplayed();
-        const isDoubleBtnVisible = await eDoubleBtn.isDisplayed();
-        const isRightBtnVisible = await eRightBtn.isDisplayed();
+        const isSingleBtnDisplayed = await eSingleBtn.isDisplayed();
+        const isDoubleBtnDisplayed = await eDoubleBtn.isDisplayed();
+        const isRightBtnDisplayed = await eRightBtn.isDisplayed();
 
         const isSingleBtnEnabled = await eSingleBtn.isEnabled();
         const isDoubleBtnEnabled = await eDoubleBtn.isEnabled();
         const isRightBtnEnabled = await eRightBtn.isEnabled();
         
-        await expect(isSingleBtnVisible).toBe(true);
-        await expect(isDoubleBtnVisible).toBe(true);
-        await expect(isRightBtnVisible).toBe(true);
+        await expect(isSingleBtnDisplayed).toBe(true);
+        await expect(isDoubleBtnDisplayed).toBe(true);
+        await expect(isRightBtnDisplayed).toBe(true);
 
         await expect(isSingleBtnEnabled).toBe(true);
         await expect(isDoubleBtnEnabled).toBe(true);
@@ -181,7 +181,7 @@ describe ('Chapter 7 - Radio Button', () => {
         for (const radio of allRadios){
             const isSelected = await radio.isSelected();
             if(!isSelected){
-                console.log('No radio button is selected by default.')
+                await expect(isSelected).toBe(false);
             }
         }
     });
@@ -214,10 +214,10 @@ describe ('Chapter 7 - Radio Button', () => {
     */
     it ('TC04 - Verify the number of radio buttons in a group.', async() => {
         const colorRadios = await $$('input[name="color"]');
-        await expect(await colorRadios.length).toEqual(5);
+        await expect(colorRadios.length).toEqual(5);
 
         const sportRadios = await $$('input[name="sport"]');
-        await expect(await sportRadios.length).toEqual(3);
+        await expect(sportRadios.length).toEqual(3);
     });
 
     /**TC_RAD_05 — Verify hai nhóm radio hoạt động độc lập nhau Trang: https://practice.expandtesting.com/radio-buttons

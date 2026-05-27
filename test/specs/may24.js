@@ -1,5 +1,5 @@
 //cSpell: disable
-describe.only ('Chapter 7 - Button', () => {
+describe ('Chapter 7 - Button', () => {
     before(async() => {
         await browser.maximizeWindow();
         await browser.url('https://demoqa.com/buttons');
@@ -49,7 +49,7 @@ describe.only ('Chapter 7 - Button', () => {
         Verify từng button isDisplayed() trả về true
         Verify từng button isEnabled() trả về true
     */
-   it.only ('TC04 — Verify the button is displayed and enabled before clicking.', async () => {
+   it ('TC04 — Verify the button is displayed and enabled before clicking.', async () => {
         const eSingleBtn = await $('//button[text() = "Click Me"]');    
         const eDoubleBtn = await $('#doubleClickBtn');
         const eRightBtn = await $('#rightClickBtn');

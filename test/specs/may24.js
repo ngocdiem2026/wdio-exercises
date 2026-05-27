@@ -54,7 +54,7 @@ describe ('Chapter 7 - Button', () => {
         const eDoubleBtn = await $('#doubleClickBtn');
         const eRightBtn = await $('#rightClickBtn');
 
-        const isDingleBtnVisible = await eSingleBtn.isDisplayed();
+        const isSingleBtnVisible = await eSingleBtn.isDisplayed();
         const isDoubleBtnVisible = await eDoubleBtn.isDisplayed();
         const isRightBtnVisible = await eRightBtn.isDisplayed();
 
@@ -62,7 +62,7 @@ describe ('Chapter 7 - Button', () => {
         const isDoubleBtnEnabled = await eDoubleBtn.isEnabled();
         const isRightBtnEnabled = await eRightBtn.isEnabled();
         
-        await expect(isDingleBtnVisible).toBe(true);
+        await expect(isSingleBtnVisible).toBe(true);
         await expect(isDoubleBtnVisible).toBe(true);
         await expect(isRightBtnVisible).toBe(true);
 
@@ -213,8 +213,8 @@ describe ('Chapter 7 - Radio Button', () => {
         Verify length của mảng theo số lượng thực tế trên trang
     */
     it ('TC04 - Verify the number of radio buttons in a group.', async() => {
-        const allRadios = await $$('input[name="color"]');
-        await expect(await allRadios.length).toEqual(5);
+        const colorRadios = await $$('input[name="color"]');
+        await expect(await colorRadios.length).toEqual(5);
 
         const sportRadios = await $$('input[name="sport"]');
         await expect(await sportRadios.length).toEqual(3);
